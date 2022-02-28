@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = mysqli_connect('localhost','root','','webster');
+$conn = mysqli_connect('localhost','root','','surplusactif');
 
 if (!isset($_SESSION['username']) && !isset($_SESSION['password'])){
     echo "<script>window.location.href = '/login.php'</script>";
@@ -30,7 +30,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['password'])){
   </form>
 
   <?php
-    $conn = mysqli_connect('localhost','root','','webster');
+    $conn = mysqli_connect('localhost','root','','surplusactif');
 
     if (isset($_POST['submit-btn'])){
       $user_name = $_POST['Name'];
