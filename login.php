@@ -11,7 +11,7 @@
     </form>
 
     <?php
-      $conn = mysqli_connect('localhost','root','','webster');
+      $conn = mysqli_connect('localhost','root','','surplusactif');
 
       if (isset($_POST['submit_btn']))
       {
@@ -24,11 +24,13 @@
         while($row_user = mysqli_fetch_array($run)){
           $db_name = $row_user['user_name'];
           $db_password = $row_user['user_password'];
+          $db_id = $row_user['user_id'];
 
           if ($username == $db_name && $password == $db_password){
             echo "<script>window.location.href = '/index.php';</script>";
             $_SESSION['username'] = $db_name;
             $_SESSION['password'] = $db_password;
+            $_SESSION['id'] = $db_id;
             $login = true;
             break;
           }
