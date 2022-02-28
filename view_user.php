@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = mysqli_connect('localhost','root','','webster');
+$conn = mysqli_connect('localhost','root','','surplusactif');
 
 if (!isset($_SESSION['username']) && !isset($_SESSION['password'])){
     echo "<script>window.location.href = '/login.php'</script>";
@@ -14,7 +14,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['password'])){
   <p class="text-primary">View User</p>
   <a href="/index.php">Back</a>
   <?php
-    $conn = mysqli_connect('localhost','root','','webster');
+    $conn = mysqli_connect('localhost','root','','surplusactif');
     if (isset($_GET['del'])){
       $del_id = $_GET['del'];
       $delete = "DELETE FROM user WHERE user_id='$del_id'";
@@ -37,12 +37,13 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['password'])){
       <th>Details</th>
       <th>Delete</th>
       <th>Edit</th>
+      <th>View</th>
       <hr>
     </tr>
   </thead>
   <tdoby>
     <?php
-      $conn = mysqli_connect('localhost','root','','webster');
+      $conn = mysqli_connect('localhost','root','','surplusactif');
       $select = "SELECT * FROM user";
       $run = mysqli_query($conn,$select);
       while($row_user = mysqli_fetch_array($run))
@@ -64,6 +65,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['password'])){
       <td><?php echo $user_details; ?></td>
       <td class="middle-element"><a class='button-red' href="view_user.php?del=<?php echo $user_id;  ?>">Delete</a></td>
       <td class="middle-element"><a class='button-green' href="/edit_user.php?edi=<?php echo $user_id ?>">Edit</a></td>
+      <td class="middle-element"><a class='button-greenyellow' href="/view_specific.php?userid=<?php echo $user_id?>">View user</a></td>
     <?php } ?>
   </tbody>
 
